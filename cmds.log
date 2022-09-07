@@ -1,0 +1,10 @@
+    1  ls
+    2  gzip -d amazon_reviews_us_Books_v1_02.tsv.gz 
+    3  grep -E '	N	Y	|	Y	Y	' amazon_reviews_us_Books_v1_02.tsv 
+    4  grep -E '	N	N	|	Y	N	' amazon_reviews_us_Books_v1_02.tsv 
+    5  awk -F "\t" '{print $12}' amazon_reviews_us_Books_v1_02.tsv > verified
+    6  grep -h "Y" verified | wc -l > counts
+    7  grep -h "N" verified | wc -l >> counts
+    8  vi verified
+    9  vi counts
+   10  history > cmds.log
